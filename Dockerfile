@@ -11,8 +11,8 @@ COPY *.go ./
 RUN go build -o metalclient
 
 FROM build as runner
-WORKDIR /app
 COPY --from=build /install/metalclient metalclient 
+WORKDIR /app
 RUN adduser -D worker
 USER worker
 
